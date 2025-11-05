@@ -10,7 +10,7 @@ export const portfolioData = {
   social: {
     github: "https://github.com/MiteshBari23",
     linkedin: "https://www.linkedin.com/in/miteshbari23/",
-    resume: "public/resume_MITESH.pdf"
+    resume: "/resume_MITESH.pdf"
   },
 
   about: {
