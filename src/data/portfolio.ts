@@ -1,8 +1,3 @@
-import { link } from "fs";
-import resume from './assets/resume_MITESH.pdf';
-import urdf from './assets/urdf.png';
-import easeRentals from './assets/easeRentals.png';
-import dGame from './assets/2dGame.png';
 
 export const portfolioData = {
   name: "Mitesh Bari",
@@ -48,7 +43,7 @@ export const portfolioData = {
       tags: ["MERN", "AI Chatbot", "Full-Stack", "MongoDB"],
       github: "https://github.com/MiteshBari23/EaseRentals",
       link: "https://easerentals.onrender.com",
-      image: "easeRentals.png",
+      image: "/images/easeRentals.png",
     },
     {
       id: 2,
@@ -58,7 +53,7 @@ export const portfolioData = {
       tags: ["MediaPipe", "Three.js", "Realtime", "WebGL"],
       github:"https://github.com/MiteshBari23/JAVA-2D-Game/tree/main/src",
       link: "https://robotmanipulator.vercel.app/",
-      image: "urdf.png"
+      image: "/images/urdf.png"
     },
     {
       id: 3,
@@ -67,7 +62,7 @@ export const portfolioData = {
       period: "Apr 2025 – May 2025",
       tags: ["Java", "JavaFX", "Game Dev", "OOP"],
       github: "https://github.com/MiteshBari23/JAVA-2D-Game",
-      image: "2dGame.png",
+      image: "/images/2dGame.png",
     }
   ],
 
