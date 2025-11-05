@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, Calendar } from "lucide-react";
+import { Github, ExternalLink, Calendar, ArrowUpRight  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolioData } from "@/data/portfolio";
 
@@ -98,6 +98,19 @@ export const Projects = () => {
                         >
                           <Github className="mr-2 h-4 w-4" />
                           Code
+                        </Button>
+                      )}
+                    </div>
+                    <div className="flex gap-3">
+                      {project.link && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex-1"
+                          onClick={() => window.open(project.link, "_blank")}
+                        >
+                           <ArrowUpRight  className="mr-2 h-4 w-4" />
+                          Link
                         </Button>
                       )}
                     </div>

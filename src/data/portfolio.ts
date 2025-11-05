@@ -1,20 +1,22 @@
+import { link } from "fs";
+
 export const portfolioData = {
   name: "Mitesh Bari",
-  tagline: "AI & Web Development | B.E. CSE @ Mumbai University",
-  location: "India",
-  email: "miteshbari23@example.com",
-  phone: "+91-XXXXXXXXXX",
+  tagline: "AI & Web Development | JAVA | SPRINGBOOT | JAVA DSA | SQL | B.E. CSE  @Mumbai University",
+  location: "Mumbai, India",
+  email: "barimitesh23@gmail.com",
+  phone: "+91-8830840075",
   
   social: {
     github: "https://github.com/MiteshBari23",
     linkedin: "https://www.linkedin.com/in/miteshbari23/",
-    resume: "/resume.pdf"
+    resume: "public/resume_MITESH.pdf"
   },
 
   about: {
-    intro: "Passionate developer specializing in AI integration, real-time systems, and interactive web experiences. I love building products that blend cutting-edge technology with elegant user experiences.",
-    interests: ["AI & Machine Learning", "Real-time Systems", "3D Web Graphics", "Full-Stack Development"],
-    status: "Open to internships and project collaborations"
+    intro: "Passionate developer specializing in AI integration, real-time systems, and interactive web experiences, java development. I love building products that blend cutting-edge technology with elegant user experiences.",
+    interests: ["AI & Machine Learning", "Real-time Systems", "3D Web Graphics", "Full-Stack Development", "SpringBoot", "Java"],
+    status: "Seeking opportunities to contribute to real-world projects through internships, freelance work, or collaborative tech initiatives."
   },
 
   experience: [
@@ -41,31 +43,34 @@ export const portfolioData = {
       period: "Jul 2024 – Aug 2024",
       tags: ["MERN", "AI Chatbot", "Full-Stack", "MongoDB"],
       github: "https://github.com/MiteshBari23/EaseRentals",
-      image: "project-easerentals.jpg"
+      link: "https://easerentals.onrender.com",
+      image: "easeRentals.png",
     },
     {
       id: 2,
+      title: "URDF Viewer",
+      description: "MediaPipe-powered URDF/3D robot controller using React Three Fiber and Three.js for real-time gesture-based robot manipulation.",
+      period: "Jun 2025 – Aug 2025",
+      tags: ["MediaPipe", "Three.js", "Realtime", "WebGL"],
+      github:"https://github.com/MiteshBari23/JAVA-2D-Game/tree/main/src",
+      link: "https://robotmanipulator.vercel.app/",
+      image: "urdf.png"
+    },
+    {
+      id: 3,
       title: "Java 2D Game",
       description: "Interactive 2D game built with Java and JavaFX, exploring core game development concepts including physics, collision detection, and sprite animation.",
       period: "Apr 2025 – May 2025",
       tags: ["Java", "JavaFX", "Game Dev", "OOP"],
       github: "https://github.com/MiteshBari23/JAVA-2D-Game",
-      image: "project-javagame.jpg"
-    },
-    {
-      id: 3,
-      title: "URDF Viewer",
-      description: "MediaPipe-powered URDF/3D robot controller using React Three Fiber and Three.js for real-time gesture-based robot manipulation.",
-      period: "Jun 2025 – Aug 2025",
-      tags: ["MediaPipe", "React Three Fiber", "Three.js", "Realtime", "WebGL"],
-      image: "project-urdf.jpg"
+      image: "2dGame.png",
     }
   ],
 
   skills: {
-    languages: ["Java", "JavaScript", "TypeScript", "SQL", "C"],
+    languages: ["Java", "JavaScript", "C", "Python"],
     frameworks: ["React.js", "Node.js", "Express.js", "Spring Boot"],
-    tools: ["Git", "CLI", "WebRTC", "Socket.IO"],
+    tools: ["SQl", "MongoDB", "Git", "CLI", "WebRTC", "Socket.IO"],
     web: ["HTML", "CSS", "Tailwind CSS", "Three.js"],
     soft: ["Leadership", "Team Building", "Communication", "Report Writing"]
   },
