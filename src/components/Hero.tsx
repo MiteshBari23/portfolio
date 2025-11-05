@@ -104,8 +104,9 @@ export const Hero = () => {
               className="group"
               onClick={() => window.open(portfolioData.social.resume, "_blank")}
             >
+
               <Download className="mr-2 h-5 w-5" />
-              Download Resume
+              <a href={portfolioData.social.resume} download>Download Resume</a>
             </Button>
           </motion.div>
         </div>

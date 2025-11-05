@@ -1,4 +1,8 @@
 import { link } from "fs";
+import resume from './assets/resume_MITESH.pdf';
+import urdf from './assets/urdf.png';
+import easeRentals from './assets/easeRentals.png';
+import dGame from './assets/2dGame.png';
 
 export const portfolioData = {
   name: "Mitesh Bari",
