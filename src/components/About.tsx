@@ -32,7 +32,7 @@ export const About = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <Briefcase className="h-5 w-5 text-primary mt-1" />
+                <Briefcase className="h-15 w-10 text-primary mb-2" />
                 <div>
                   <h3 className="font-semibold mb-1">Status</h3>
                   <p className="text-muted-foreground">{portfolioData.about.status}</p>

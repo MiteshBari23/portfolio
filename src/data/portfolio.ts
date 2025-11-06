@@ -1,7 +1,7 @@
 
 export const portfolioData = {
   name: "Mitesh Bari",
-  tagline: "AI & Web Development | JAVA | SPRINGBOOT | JAVA DSA | SQL | B.E. CSE  @Mumbai University",
+  tagline: " JAVA | SPRINGBOOT | JAVA DSA | SQL | AI | Web Development | B.E. CSE  @Mumbai University",
   location: "Mumbai, India",
   email: "barimitesh23@gmail.com",
   phone: "+91-8830840075",
@@ -14,7 +14,7 @@ export const portfolioData = {
 
   about: {
     intro: "Passionate developer specializing in AI integration, real-time systems, and interactive web experiences, java development. I love building products that blend cutting-edge technology with elegant user experiences.",
-    interests: ["AI & Machine Learning", "Real-time Systems", "3D Web Graphics", "Full-Stack Development", "SpringBoot", "Java"],
+    interests: ["SpringBoot","Java","Java DSA","Real-time Systems","3D Web Graphics", "Full-Stack Development","AI", "Machine Learning"],
     status: "Seeking opportunities to contribute to real-world projects through internships, freelance work, or collaborative tech initiatives."
   },
 
