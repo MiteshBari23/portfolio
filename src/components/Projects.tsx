@@ -56,7 +56,7 @@ export const Projects = () => {
                 >
                   <div className="aspect-video overflow-hidden relative">
                     <img
-                      src={`/src/assets/${project.image}`}
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />

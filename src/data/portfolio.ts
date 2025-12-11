@@ -1,4 +1,3 @@
-import { link } from "fs";
 
 export const portfolioData = {
   name: "Mitesh Bari",
@@ -10,12 +9,12 @@ export const portfolioData = {
   social: {
     github: "https://github.com/MiteshBari23",
     linkedin: "https://www.linkedin.com/in/miteshbari23/",
-    resume: "public/resume_MITESH.pdf"
+    resume: "/resume_MITESH.pdf"
   },
 
   about: {
     intro: "Passionate developer specializing in AI integration, real-time systems, and interactive web experiences, java development. I love building products that blend cutting-edge technology with elegant user experiences.",
-    interests: ["AI & Machine Learning", "Real-time Systems", "3D Web Graphics", "Full-Stack Development", "SpringBoot", "Java"],
+    interests: ["SpringBoot","Java","Java DSA","Real-time Systems","3D Web Graphics", "Full-Stack Development","AI", "Machine Learning"],
     status: "Seeking opportunities to contribute to real-world projects through internships, freelance work, or collaborative tech initiatives."
   },
 
@@ -44,7 +43,7 @@ export const portfolioData = {
       tags: ["MERN", "AI Chatbot", "Full-Stack", "MongoDB"],
       github: "https://github.com/MiteshBari23/EaseRentals",
       link: "https://easerentals.onrender.com",
-      image: "easeRentals.png",
+      image: "/images/easeRentals.png",
     },
     {
       id: 2,
@@ -54,7 +53,7 @@ export const portfolioData = {
       tags: ["MediaPipe", "Three.js", "Realtime", "WebGL"],
       github:"https://github.com/MiteshBari23/JAVA-2D-Game/tree/main/src",
       link: "https://robotmanipulator.vercel.app/",
-      image: "urdf.png"
+      image: "/images/urdf.png"
     },
     {
       id: 3,
@@ -63,7 +62,7 @@ export const portfolioData = {
       period: "Apr 2025 – May 2025",
       tags: ["Java", "JavaFX", "Game Dev", "OOP"],
       github: "https://github.com/MiteshBari23/JAVA-2D-Game",
-      image: "2dGame.png",
+      image: "/images/2dGame.png",
     }
   ],
 
