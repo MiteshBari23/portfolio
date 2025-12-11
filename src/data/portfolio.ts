@@ -2,7 +2,7 @@ import { link } from "fs";
 
 export const portfolioData = {
   name: "Mitesh Bari",
-  tagline: "AI & Web Development | JAVA | SPRINGBOOT | JAVA DSA | SQL | B.E. CSE  @Mumbai University",
+  tagline: "JAVA | SPRINGBOOT | JAVA DSA | AI & Web Development | MongoDB | SQL | B.E. CSE  @Mumbai University",
   location: "Mumbai, India",
   email: "barimitesh23@gmail.com",
   phone: "+91-8830840075",
