@@ -114,12 +114,6 @@ const TECHS: Tech[] = [
   },
   // example: explicit radius override (if you want this specific icon further out)
   {
-    id: "cloud",
-    icon: <SiDocker />,
-    color: "#b3e6ff",
-    orbit: { radius: "24vmin", angleDeg: 210, speedSec: 20 },
-  },
-  {
     id: "p1",
     icon: <SiReact />,
     color: "#61DAFB",
