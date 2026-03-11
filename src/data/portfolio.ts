@@ -1,7 +1,7 @@
 
 export const portfolioData = {
   name: "Mitesh Bari",
-  tagline: "JAVA | SPRINGBOOT | JAVA DSA | AI & Web Development | MongoDB | SQL | B.E. CSE  @Mumbai University",
+  tagline: "JAVA | SPRINGBOOT | JAVA DSA | AI & Web Development | MongoDB | SQL | Postgres | B.E. CSE  @Mumbai University",
   location: "Mumbai, India",
   email: "barimitesh23@gmail.com",
   phone: "+91-8830840075",
@@ -9,12 +9,12 @@ export const portfolioData = {
   social: {
     github: "https://github.com/MiteshBari23",
     linkedin: "https://www.linkedin.com/in/miteshbari23/",
-    resume: "/resume_MITESH.pdf"
+    resume: "/resumeMitesh.pdf"
   },
 
   about: {
     intro: "Passionate developer specializing in AI integration, real-time systems, and interactive web experiences, java development. I love building products that blend cutting-edge technology with elegant user experiences.",
-    interests: ["SpringBoot","Java","Java DSA","Real-time Systems","3D Web Graphics", "Full-Stack Development","AI", "Machine Learning"],
+    interests: ["Java","SpringBoot","Java DSA","Databases", "Real-time Systems","3D Web Graphics", "Full-Stack Development","AI", "Machine Learning"],
     status: "Seeking opportunities to contribute to real-world projects through internships, freelance work, or collaborative tech initiatives."
   },
 
@@ -63,13 +63,22 @@ export const portfolioData = {
       tags: ["Java", "JavaFX", "Game Dev", "OOP"],
       github: "https://github.com/MiteshBari23/JAVA-2D-Game",
       image: "/images/2dGame.png",
+    },
+    {
+      id: 4,
+      title: "BookMySeat",
+      description: "Full-stack seat reservation system with a Spring Boot (Java) REST API backend and a React + TypeScript frontend. Implemented APIs for seat availability, booking management, and data persistence.",
+      period: "Dec 2025 – Jan 2026",
+      tags: ["Java", "Springboot", "Postgres", "OOP", "React", "Typescript", "Keycloak"],
+      github: "https://github.com/MiteshBari23/BookMySeat",
+      image: "/images/bookmyseat.png",
     }
   ],
 
   skills: {
     languages: ["Java", "JavaScript", "C", "Python"],
-    frameworks: ["React.js", "Node.js", "Express.js", "Spring Boot"],
-    tools: ["SQl", "MongoDB", "Git", "CLI", "WebRTC", "Socket.IO"],
+    frameworks: ["Spring Boot","React.js", "Node.js", "Express.js"],
+    tools: ["SQl", "MongoDB","PostgresSQL", "Git", "CLI", "WebRTC", "Socket.IO"],
     web: ["HTML", "CSS", "Tailwind CSS", "Three.js"],
     soft: ["Leadership", "Team Building", "Communication", "Report Writing"]
   },
