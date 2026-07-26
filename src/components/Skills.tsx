@@ -1,64 +1,118 @@
-import { motion } from "framer-motion";
-import { Code2, Wrench, Globe, Heart } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Check, ArrowRight, Code2, Layers, Sparkles } from "lucide-react";
+import { WordsPullUpMultiStyle } from "./animations";
 
-const skillCategories = [
-  { title: "Languages", icon: Code2, skills: portfolioData.skills.languages },
-  { title: "Frameworks & Tools", icon: Wrench, skills: [...portfolioData.skills.frameworks, ...portfolioData.skills.tools] },
-  { title: "Web Technologies", icon: Globe, skills: portfolioData.skills.web },
-  { title: "Soft Skills", icon: Heart, skills: portfolioData.skills.soft },
+const cards = [
+  { kind: "hero" as const, title: "Craft over noise." },
+  {
+    kind: "list" as const,
+    number: "01",
+    icon: Code2,
+    title: "Backend engineering.",
+    items: [
+      "Java, Spring Boot & REST APIs",
+      "PostgreSQL, MongoDB, SQL",
+      "Auth with Keycloak / JWT",
+      "Clean architecture & OOP",
+    ],
+  },
+  {
+    kind: "list" as const,
+    number: "02",
+    icon: Layers,
+    title: "Full-stack web.",
+    items: ["React, TypeScript, Tailwind", "Node.js & Express", "Responsive, accessible UI"],
+  },
+  {
+    kind: "list" as const,
+    number: "03",
+    icon: Sparkles,
+    title: "Real-time & 3D.",
+    items: ["WebRTC & Socket.IO pipelines", "MediaPipe pose & gesture", "Three.js / React Three Fiber"],
+  },
 ];
 
 export const Skills = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section id="skills" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            Skills & <span className="text-gradient">Technologies</span>
+    <section id="skills" className="relative min-h-screen bg-black py-24 md:py-32 px-4 md:px-6 overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-[0.12] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-6" style={{ color: "rgba(225,224,204,0.6)" }}>
+            What I do
+          </p>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal max-w-4xl mx-auto leading-tight">
+            <WordsPullUpMultiStyle
+              segments={[
+                { text: "Studio-grade workflows for shipping software.", className: "text-primary" },
+                { text: " Built for depth. Powered by craft.", className: "text-gray-500" },
+              ]}
+            />
           </h2>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: categoryIndex * 0.1 }}
-                className="glass rounded-2xl p-6"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <category.icon className="h-6 w-6 text-primary" />
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-2 lg:h-[480px]">
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-2xl overflow-hidden h-[380px] lg:h-full"
+              style={{ background: card.kind === "hero" ? "#0a0a0a" : "#212121" }}
+            >
+              {card.kind === "hero" ? (
+                <>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at 50% 30%, rgba(222,219,200,0.15) 0%, transparent 60%), linear-gradient(180deg, #111 0%, #050505 100%)",
+                    }}
+                  />
+                  <div className="absolute inset-0 noise-overlay opacity-[0.4] mix-blend-overlay" />
+                  <div className="relative h-full flex flex-col justify-end p-6">
+                    <p className="text-2xl md:text-3xl font-medium leading-tight" style={{ color: "#E1E0CC" }}>
+                      Your creative canvas.
+                    </p>
                   </div>
-                  <h3 className="text-xl font-bold">{category.title}</h3>
-                </div>
+                </>
+              ) : (
+                <div className="h-full flex flex-col p-6">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-black/50 border border-white/5 flex items-center justify-center">
+                      <card.icon className="w-5 h-5" style={{ color: "#DEDBC8" }} />
+                    </div>
+                    <span className="text-xs text-gray-500 font-mono">{card.number}</span>
+                  </div>
 
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: categoryIndex * 0.1 + index * 0.05 }}
-                      whileHover={{ scale: 1.05 }}
-                      className="px-4 py-2 bg-background/50 border border-border rounded-lg text-sm font-medium hover:border-primary/50 transition-colors cursor-default"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+                  <h3 className="text-lg md:text-xl font-medium mb-6" style={{ color: "#E1E0CC" }}>
+                    {card.title}
+                  </h3>
+
+                  <ul className="space-y-3 flex-1">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                        <span className="text-sm text-gray-400 leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button className="mt-6 inline-flex items-center gap-2 text-sm text-primary group w-fit">
+                    Learn more
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" style={{ transform: "rotate(-45deg)" }} />
+                  </button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

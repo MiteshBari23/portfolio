@@ -1,104 +1,48 @@
-import { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
-const navItems = ["Home", "About", "Experience", "Projects", "Skills", "Education", "Contact"];
+const navItems = [
+  { label: "About", target: "about" },
+  { label: "Work", target: "experience" },
+  { label: "Projects", target: "projects" },
+  { label: "Skills", target: "skills" },
+  { label: "Contact", target: "contact" },
+];
 
 export const Navbar = () => {
-  const [activeSection, setActiveSection] = useState("Home");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const [hover, setHover] = useState<string | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map(item => ({
-        id: item.toLowerCase(),
-        element: document.getElementById(item.toLowerCase())
-      }));
-
-      const currentSection = sections.find(section => {
-        if (!section.element) return false;
-        const rect = section.element.getBoundingClientRect();
-        return rect.top <= 100 && rect.bottom >= 100;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection.id.charAt(0).toUpperCase() + currentSection.id.slice(1));
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark");
-  };
-
-  const scrollToSection = (section: string) => {
-    const element = document.getElementById(section.toLowerCase());
-    element?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left z-50"
-        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-[2px] origin-left z-[60]"
+        style={{ scaleX, background: "#DEDBC8" }}
       />
-      <nav className="fixed top-0 left-0 right-0 z-40 glass mt-4 mx-4 rounded-2xl">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-xl font-bold text-gradient"
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+        <nav className="pointer-events-auto bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 md:px-8 md:py-3 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-12 border-x border-b border-white/5">
+          {navItems.map((item) => (
+            <button
+              key={item.target}
+              onClick={() => scrollTo(item.target)}
+              onMouseEnter={() => setHover(item.target)}
+              onMouseLeave={() => setHover(null)}
+              className="text-[10px] sm:text-xs md:text-sm tracking-wide transition-colors"
+              style={{
+                color: hover === item.target ? "#E1E0CC" : "rgba(225,224,204,0.7)",
+                fontWeight: 400,
+              }}
             >
-              MB
-            </motion.div>
-
-            <div className="hidden md:flex items-center gap-1">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(item)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    activeSection === item
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {item}
-                </motion.button>
-              ))}
-            </div>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-        </div>
-      </nav>
+              {item.label}
+            </button>
+          ))}
+        </nav>
+      </div>
     </>
   );
 };
