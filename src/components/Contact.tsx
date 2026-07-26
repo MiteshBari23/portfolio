@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Send, Loader2, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { portfolioData } from "@/data/portfolio";
 import emailjs from "@emailjs/browser";
-const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -21,21 +20,17 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!formData.name || !formData.email || !formData.message) {
-      toast({ title: "Error", description: "Please fill in all fields", variant: "destructive" });
+      toast({ title: "Missing fields", description: "Please fill in all fields", variant: "destructive" });
       return;
     }
-
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast({ title: "Error", description: "Please enter a valid email address", variant: "destructive" });
+      toast({ title: "Invalid email", description: "Please enter a valid email address", variant: "destructive" });
       return;
     }
 
     setIsSubmitting(true);
-
     try {
-      // format time for your template (IST)
       const istTime = new Date().toLocaleString("en-IN", {
         timeZone: "Asia/Kolkata",
         hour12: true,
@@ -46,17 +41,13 @@ export const Contact = () => {
         minute: "2-digit",
       });
 
-      // ✅ Real send via EmailJS
       await emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
-          // must match your template placeholders
           name: formData.name,
           time: istTime,
           message: formData.message,
-
-          // helpful extras
           reply_to: formData.email,
           from_email: formData.email,
           subject: `New portfolio inquiry from ${formData.name}`,
@@ -64,108 +55,93 @@ export const Contact = () => {
         PUBLIC_KEY
       );
 
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
+      toast({ title: "Message sent", description: "Thank you for reaching out. I'll be in touch soon." });
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            Get In <span className="text-gradient">Touch</span>
-          </h2>
+    <section id="contact" className="bg-black py-24 md:py-32 px-4 md:px-6">
+      <div className="max-w-6xl mx-auto rounded-2xl md:rounded-[2rem] bg-[#101010] p-8 md:p-16">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+          <div>
+            <p className="text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-6" style={{ color: "rgba(225,224,204,0.6)" }}>
+              Get in touch
+            </p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal leading-[0.95] mb-8" style={{ color: "#E1E0CC" }}>
+              Let's make <span className="font-serif italic">something.</span>
+            </h2>
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-md">
+              Have a project, an idea, or a role in mind? I'd love to hear about it. Reach out and I'll get back within a day or two.
+            </p>
 
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
-              <div className="glass rounded-2xl p-6">
-                <h3 className="text-xl font-bold mb-6">Contact Information</h3>
-                <div className="space-y-4">
-                  <a href={`mailto:${portfolioData.email}`} className="flex items-center gap-4 p-4 bg-background/50 rounded-lg hover:border-primary/50 border border-transparent transition-colors group">
-                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                      <Mail className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-semibold">{portfolioData.email}</p>
-                    </div>
-                  </a>
-
-                  <a href={`tel:${portfolioData.phone}`} className="flex items-center gap-4 p-4 bg-background/50 rounded-lg hover:border-primary/50 border border-transparent transition-colors group">
-                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                      <Phone className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Phone</p>
-                      <p className="font-semibold">{portfolioData.phone}</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass rounded-2xl p-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-background/50"
-                  />
-                </div>
-
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-background/50"
-                  />
-                </div>
-
-                <div>
-                  <Textarea
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="bg-background/50 min-h-[150px]"
-                  />
-                </div>
-
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-5 w-5" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </motion.div>
+            <a href={`mailto:${portfolioData.email}`} className="inline-flex items-center gap-3 group">
+              <span className="w-10 h-10 rounded-full bg-black/50 border border-white/10 flex items-center justify-center">
+                <Mail className="w-4 h-4 text-primary" />
+              </span>
+              <span className="text-sm md:text-base text-primary">{portfolioData.email}</span>
+              <ArrowRight
+                className="w-4 h-4 text-primary transition-transform group-hover:translate-x-1"
+                style={{ transform: "rotate(-45deg)" }}
+              />
+            </a>
           </div>
-        </motion.div>
+
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="space-y-4"
+          >
+            <Input
+              placeholder="Your name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="bg-black/40 border-white/10 h-12 rounded-xl"
+            />
+            <Input
+              type="email"
+              placeholder="Your email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="bg-black/40 border-white/10 h-12 rounded-xl"
+            />
+            <Textarea
+              placeholder="Tell me about it..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="bg-black/40 border-white/10 min-h-[160px] rounded-xl"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="group inline-flex items-center gap-2 hover:gap-3 transition-all bg-primary rounded-full pl-5 pr-1.5 py-1.5 text-black font-medium text-sm sm:text-base disabled:opacity-70"
+            >
+              {isSubmitting ? (
+                <>
+                  Sending
+                  <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+                    <Loader2 className="w-4 h-4 animate-spin" style={{ color: "#E1E0CC" }} />
+                  </span>
+                </>
+              ) : (
+                <>
+                  Send message
+                  <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <Send className="w-4 h-4" style={{ color: "#E1E0CC" }} />
+                  </span>
+                </>
+              )}
+            </button>
+          </motion.form>
+        </div>
       </div>
     </section>
   );

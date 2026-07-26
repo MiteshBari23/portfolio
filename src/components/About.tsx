@@ -1,64 +1,44 @@
-import { motion } from "framer-motion";
-import { MapPin, Briefcase } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
+import { WordsPullUpMultiStyle, ScrollRevealText } from "./animations";
 
 export const About = () => {
   return (
-    <section id="about" className="py-24">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+    <section id="about" className="bg-black py-24 md:py-32 px-4 md:px-6">
+      <div className="max-w-6xl mx-auto rounded-2xl md:rounded-[2rem] bg-[#101010] px-6 py-20 md:px-16 md:py-28 text-center">
+        <p className="text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-8" style={{ color: "#DEDBC8" }}>
+          The story
+        </p>
+
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-4xl mx-auto leading-[0.95] sm:leading-[0.9]"
+          style={{ color: "#E1E0CC" }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            About <span className="text-gradient">Me</span>
-          </h2>
+          <WordsPullUpMultiStyle
+            segments={[
+              { text: "I am Mitesh Bari,", className: "font-normal" },
+              { text: "a self-taught engineer.", className: "font-serif italic font-normal" },
+              { text: "I build real-time systems, full-stack products and interactive experiences.", className: "font-normal" },
+            ]}
+          />
+        </h2>
 
-          <div className="glass rounded-2xl p-8 md:p-12">
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              {portfolioData.about.intro}
-            </p>
+        <div className="mt-16 max-w-2xl mx-auto">
+          <ScrollRevealText
+            className="text-sm sm:text-base md:text-lg leading-relaxed"
+            text="Currently pursuing my B.E. in Computer Science at Mumbai University, I have spent the last few years working across Java, Spring Boot, React and 3D web tooling — shipping projects that blend robust backends with expressive, tactile interfaces."
+          />
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-1" />
-                <div>
-                  <h3 className="font-semibold mb-1">Location</h3>
-                  <p className="text-muted-foreground">{portfolioData.location}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Briefcase className="h-15 w-10 text-primary mb-2" />
-                <div>
-                  <h3 className="font-semibold mb-1">Status</h3>
-                  <p className="text-muted-foreground">{portfolioData.about.status}</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Interests</h3>
-              <div className="flex flex-wrap gap-3">
-                {portfolioData.about.interests.map((interest, index) => (
-                  <motion.span
-                    key={interest}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium"
-                  >
-                    {interest}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        <div className="mt-14 flex flex-wrap justify-center gap-2">
+          {["Java", "Spring Boot", "React", "TypeScript", "Three.js", "PostgreSQL", "WebRTC", "AI"].map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 rounded-full border text-xs sm:text-sm"
+              style={{ borderColor: "rgba(222,219,200,0.15)", color: "rgba(225,224,204,0.7)" }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
