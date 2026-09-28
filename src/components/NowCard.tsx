@@ -83,7 +83,7 @@ export const NowCard: React.FC = () => {
             href={portfolioData.social.resume}
             target="_blank"
             rel="noreferrer"
-            className="relative mt-5 inline-block text-xs text-cream/60 hover:text-cream transition-colors"
+            className="btn-glass mt-5 inline-block rounded-full px-4 py-1.5 text-xs text-cream/70 hover:text-cream transition-colors"
           >
             Resume ↗
           </a>
