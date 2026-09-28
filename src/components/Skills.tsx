@@ -104,10 +104,6 @@ export const Skills = () => {
                     ))}
                   </ul>
 
-                  <button className="mt-6 inline-flex items-center gap-2 text-sm text-primary group w-fit">
-                    Learn more
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" style={{ transform: "rotate(-45deg)" }} />
-                  </button>
                 </div>
               )}
             </motion.div>

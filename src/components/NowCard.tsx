@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { portfolioData } from "@/data/portfolio";
 
-const stack = ["Apex", "REST/SOAP", "Node.js", "React", "Python", "Salesforce"];
+const stack = ["Apex", "REST/SOAP", "Javascript", "lwc", "Salesforce"];
 
 const useClock = () => {
   const [now, setNow] = useState(() => new Date());
@@ -79,14 +79,14 @@ export const NowCard: React.FC = () => {
               <span key={s} className="glass-pill text-[10px] md:text-[11px] px-2.5 py-1 text-cream/75">{s}</span>
             ))}
           </div>
-          <a
+          {/* <a
             href={portfolioData.social.resume}
             target="_blank"
             rel="noreferrer"
             className="btn-glass mt-5 inline-block rounded-full px-4 py-1.5 text-xs text-cream/70 hover:text-cream transition-colors"
           >
             Resume ↗
-          </a>
+          </a> */}
         </motion.div>
       </motion.div>
     </motion.div>

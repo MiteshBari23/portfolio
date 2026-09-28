@@ -19,6 +19,18 @@ export const portfolioData = {
 
   experience: [
     {
+      id: 2,
+      company: "Exceller Tech",
+      role: "Software Developer",
+      location: "Mumbai, India",
+      period: "Jun 2026 – Present",
+      description: [
+        "Engineered scalable backend logic using Apex classes, triggers, and Batch/Queueable Apex to automate core business processes within Salesforce governor limits",
+        "Built and integrated REST/SOAP APIs connecting Salesforce with external systems for real-time bi-directional data synchronization",
+        "Led large-scale data migration efforts using Batch Apex and Bulk API, restructuring and transferring records into Salesforce with zero data loss"
+      ]
+    },
+    {
       id: 1,
       company: "Techligence Pvt. Ltd",
       role: "AI & Web Development Intern",
@@ -34,6 +46,15 @@ export const portfolioData = {
   ],
 
   projects: [
+    {
+      id: 5,
+      title: "Caraxes",
+      description: "A Git-like version control system built from scratch in Go — supports repo init, staging, object storage, tree creation and commits.",
+      period: "2026",
+      tags: ["Go", "Lipgloss", "SHA-1", "CLI"],
+      github: "https://github.com/MiteshBari23/Caraxes",
+      image: "/images/caraxes.png",
+    },
     {
       id: 1,
       title: "EaseRentals",
