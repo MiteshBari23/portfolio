@@ -11,7 +11,7 @@ export const Footer = () => {
               Mitesh Bari
             </p>
             <p className="text-sm md:text-base" style={{ color: "rgba(225,224,204,0.7)" }}>
-              Thanks for stopping by — find me on:
+              Thanks for stopping by — find me on 
             </p>
           </div>
 

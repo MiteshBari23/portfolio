@@ -25,20 +25,27 @@ export const Navbar = () => {
         style={{ scaleX, background: "#DEDBC8" }}
       />
       <div className="fixed top-3 left-0 right-0 z-50 flex justify-center pointer-events-none">
-        <nav className="glass pointer-events-auto !rounded-full px-4 py-2 md:px-8 md:py-3 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-12">
+        <nav className="glass pointer-events-auto !rounded-full px-2 py-2 md:px-3 md:py-2 flex items-center gap-1 sm:gap-1.5 md:gap-2">
           {navItems.map((item) => (
             <button
               key={item.target}
               onClick={() => scrollTo(item.target)}
               onMouseEnter={() => setHover(item.target)}
               onMouseLeave={() => setHover(null)}
-              className="text-[10px] sm:text-xs md:text-sm tracking-wide transition-colors"
+              className="relative px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 rounded-full text-[10px] sm:text-xs md:text-sm tracking-wide transition-colors"
               style={{
                 color: hover === item.target ? "#E1E0CC" : "rgba(225,224,204,0.7)",
                 fontWeight: 400,
               }}
             >
-              {item.label}
+              {hover === item.target && (
+                <motion.span
+                  layoutId="nav-hover-pill"
+                  className="btn-glass absolute inset-0 rounded-full"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                />
+              )}
+              <span className="relative z-10">{item.label}</span>
             </button>
           ))}
         </nav>
