@@ -24,8 +24,8 @@ export const Navbar = () => {
         className="fixed top-0 left-0 right-0 h-[2px] origin-left z-[60]"
         style={{ scaleX, background: "#DEDBC8" }}
       />
-      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
-        <nav className="pointer-events-auto bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 md:px-8 md:py-3 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-12 border-x border-b border-white/5">
+      <div className="fixed top-3 left-0 right-0 z-50 flex justify-center pointer-events-none">
+        <nav className="glass pointer-events-auto !rounded-full px-4 py-2 md:px-8 md:py-3 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-12">
           {navItems.map((item) => (
             <button
               key={item.target}
