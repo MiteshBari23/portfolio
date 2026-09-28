@@ -122,20 +122,21 @@ export const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group inline-flex items-center gap-2 hover:gap-3 transition-all bg-primary rounded-full pl-5 pr-1.5 py-1.5 text-black font-medium text-sm sm:text-base disabled:opacity-70"
+              className="btn-glass group inline-flex items-center gap-2 hover:gap-3 transition-all rounded-full pl-5 pr-1.5 py-1.5 text-sm sm:text-base disabled:opacity-70"
+              style={{ color: "#E1E0CC" }}
             >
               {isSubmitting ? (
                 <>
                   Sending
-                  <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
-                    <Loader2 className="w-4 h-4 animate-spin" style={{ color: "#E1E0CC" }} />
+                  <span className="bg-primary rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+                    <Loader2 className="w-4 h-4 animate-spin" style={{ color: "#0a0a0a" }} />
                   </span>
                 </>
               ) : (
                 <>
                   Send message
-                  <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transition-transform group-hover:scale-110">
-                    <Send className="w-4 h-4" style={{ color: "#E1E0CC" }} />
+                  <span className="bg-primary rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <Send className="w-4 h-4" style={{ color: "#0a0a0a" }} />
                   </span>
                 </>
               )}
